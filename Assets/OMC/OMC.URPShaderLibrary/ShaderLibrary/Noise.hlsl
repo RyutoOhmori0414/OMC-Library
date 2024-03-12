@@ -16,16 +16,16 @@ float ValueNoise(float2 seeds, float2 noiseScale)
     float2 i = floor(seeds);
     float2 f = frac(seeds);
 
-    float2 i10 = i + float2(1, 0);
-    float2 i01 = i + float2(0, 1);
-    float2 i11 = i + float2(1, 1);
+    float2 i10 = i + float2(1.0F, 0.0F);
+    float2 i01 = i + float2(0.0F, 1.0F);
+    float2 i11 = i + float2(1.0F, 1.0F);
 
     float v00 = rand(i);
     float v10 = rand(i10);
     float v01 = rand(i01);
     float v11 = rand(i11);
 
-    float2 p = smoothstep(0, 1, f);
+    float2 p = smoothstep(0.0F, 1.0F, f);
 
     float v00v10 = lerp(v00, v10, p.x);
     float v01v11 = lerp(v01, v11, p.x);
@@ -40,18 +40,18 @@ float PerlinNoise(float2 seeds, float2 noiseScale)
     float2 i = floor(seeds);
     float2 f = frac(seeds);
 
-    float2 i01 = i + float2(0, 1);
-    float2 i10 = i + float2(1, 0);
-    float2 i11 = i + float2(1, 1);
+    float2 i01 = i + float2(0.0F, 1.0F);
+    float2 i10 = i + float2(1.0F, 0.0F);
+    float2 i11 = i + float2(1.0F, 1.0F);
     
-    float2 f01 = f - float2(0, 1);
-    float2 f10 = f - float2(1, 0);
-    float2 f11 = f - float2(1, 1);
+    float2 f01 = f - float2(0.0F, 1.0F);
+    float2 f10 = f - float2(1.0F, 0.0F);
+    float2 f11 = f - float2(1.0F, 1.0F);
 
-    float2 g00 = normalize(rand2(i) * 2 - 1);
-    float2 g01 = normalize(rand2(i01) * 2 - 1);
-    float2 g10 = normalize(rand2(i10) * 2 - 1);
-    float2 g11 = normalize(rand2(i11) * 2 - 1);
+    float2 g00 = normalize(rand2(i) * 2.0F - 1.0F);
+    float2 g01 = normalize(rand2(i01) * 2.0F - 1.0F);
+    float2 g10 = normalize(rand2(i10) * 2.0F - 1.0F);
+    float2 g11 = normalize(rand2(i11) * 2.0F - 1.0F);
 
     float d00 = dot(g00, f);
     float d01 = dot(g01, f01);
@@ -63,7 +63,7 @@ float PerlinNoise(float2 seeds, float2 noiseScale)
     float d00d01 = lerp(d00, d01, f.y);
     float d10d11 = lerp(d10, d11, f.y);
 
-    return lerp(d00d01, d10d11, f.x) * 0.5 + 0.5;
+    return lerp(d00d01, d10d11, f.x) * 0.5F + 0.5F;
 }
 
 float PerlinNoise3D(float3 seeds, float3 noiseScale)
@@ -73,30 +73,30 @@ float PerlinNoise3D(float3 seeds, float3 noiseScale)
     float3 i = floor(seeds);
     float3 f = frac(seeds);
 
-    float3 i100 = i + float3(1, 0, 0);
-    float3 i010 = i + float3(0, 1, 0);
-    float3 i110 = i + float3(1, 1, 0);
-    float3 i001 = i + float3(0, 0, 1);
-    float3 i101 = i + float3(1, 0, 1);
-    float3 i011 = i + float3(0, 1, 1);
-    float3 i111 = i + float3(1, 1, 1);
+    float3 i100 = i + float3(1.0F, 0.0F, 0.0F);
+    float3 i010 = i + float3(0.0F, 1.0F, 0.0F);
+    float3 i110 = i + float3(1.0F, 1.0F, 0.0F);
+    float3 i001 = i + float3(0.0F, 0.0F, 1.0F);
+    float3 i101 = i + float3(1.0F, 0.0F, 1.0F);
+    float3 i011 = i + float3(0.0F, 1.0F, 1.0F);
+    float3 i111 = i + float3(1.0F, 1.0F, 1.0F);
 
-    float3 f100 = f - float3(1, 0, 0);
-    float3 f010 = f - float3(0, 1, 0);
-    float3 f110 = f - float3(1, 1, 0);
-    float3 f001 = f - float3(0, 0, 1);
-    float3 f101 = f - float3(1, 0, 1);
-    float3 f011 = f - float3(0, 1, 1);
-    float3 f111 = f - float3(1, 1, 1);
+    float3 f100 = f - float3(1.0F, 0.0F, 0.0F);
+    float3 f010 = f - float3(0.0F, 1.0F, 0.0F);
+    float3 f110 = f - float3(1.0F, 1.0F, 0.0F);
+    float3 f001 = f - float3(0.0F, 0.0F, 1.0F);
+    float3 f101 = f - float3(1.0F, 0.0F, 1.0F);
+    float3 f011 = f - float3(0.0F, 1.0F, 1.0F);
+    float3 f111 = f - float3(1.0F, 1.0F, 1.0F);
 
-    float3 g000 = normalize(rand3(i) * 2 - 1);
-    float3 g100 = normalize(rand3(i100) * 2 - 1);
-    float3 g010 = normalize(rand3(i010) * 2 - 1);
-    float3 g110 = normalize(rand3(i110) * 2 - 1);
-    float3 g001 = normalize(rand3(i001) * 2 - 1);
-    float3 g101 = normalize(rand3(i101) * 2 - 1);
-    float3 g011 = normalize(rand3(i011) * 2 - 1);
-    float3 g111 = normalize(rand3(i111) * 2 - 1);
+    float3 g000 = normalize(rand3(i) * 2.0F - 1.0F);
+    float3 g100 = normalize(rand3(i100) * 2.0F - 1.0F);
+    float3 g010 = normalize(rand3(i010) * 2.0F - 1.0F);
+    float3 g110 = normalize(rand3(i110) * 2.0F - 1.0F);
+    float3 g001 = normalize(rand3(i001) * 2.0F - 1.0F);
+    float3 g101 = normalize(rand3(i101) * 2.0F - 1.0F);
+    float3 g011 = normalize(rand3(i011) * 2.0F - 1.0F);
+    float3 g111 = normalize(rand3(i111) * 2.0F - 1.0F);
 
     float d000 = dot(g000, f);
     float d100 = dot(g100, f100);
@@ -107,7 +107,7 @@ float PerlinNoise3D(float3 seeds, float3 noiseScale)
     float d011 = dot(g011, f011);
     float d111 = dot(g111, f111);
 
-    f = smoothstep(0, 1, f);
+    f = smoothstep(0.0F, 1.0F, f);
 
     float d000d100 = lerp(d000, d100, f.x);
     float d010d110 = lerp(d010, d110, f.x);
@@ -117,12 +117,12 @@ float PerlinNoise3D(float3 seeds, float3 noiseScale)
     float d000d100d010d110 = lerp(d000d100, d010d110, f.y);
     float d001d101d011d111 = lerp(d001d101, d011d111, f.y);
 
-    return lerp(d000d100d010d110, d001d101d011d111, f.z) * 0.5 + 0.5;
+    return lerp(d000d100d010d110, d001d101d011d111, f.z) * 0.5F + 0.5F;
 }
 
 float DotGradient(float3 seeds, float3 f)
 {
-    switch (floor(lerp(0, 12, rand(seeds.xy + seeds.z))))
+    switch (floor(lerp(0.0F, 12.0F, rand(seeds.xy + seeds.z))))
     {
     case 0: return f.x + f.y;
     case 1: return -f.x + f.y;
@@ -146,23 +146,23 @@ float ImprovedNoise(float3 seeds, float3 scale)
     float3 i = floor(seeds);
     float3 f = frac(seeds);
 
-    float3 i100 = i + float3(1, 0, 0);
-    float3 i010 = i + float3(0, 1, 0);
-    float3 i110 = i + float3(1, 1, 0);
+    float3 i100 = i + float3(1.0F, 0.0F, 0.0F);
+    float3 i010 = i + float3(0.0F, 1.0F, 0.0F);
+    float3 i110 = i + float3(1.0F, 1.0F, 0.0F);
 
-    float3 i001 = i + float3(0, 0, 1);
-    float3 i101 = i + float3(1, 0, 1);
-    float3 i011 = i + float3(0, 1, 1);
-    float3 i111 = i + float3(1, 1, 1);
+    float3 i001 = i + float3(0.0F, 0.0F, 1.0F);
+    float3 i101 = i + float3(1.0F, 0.0F, 1.0F);
+    float3 i011 = i + float3(0.0F, 1.0F, 1.0F);
+    float3 i111 = i + float3(1.0F, 1.0F, 1.0F);
 
-    float3 f100 = f - float3(1, 0, 0);
-    float3 f010 = f - float3(0, 1, 0);
-    float3 f110 = f - float3(1, 1, 0);
+    float3 f100 = f - float3(1.0F, 0.0F, 0.0F);
+    float3 f010 = f - float3(0.0F, 1.0F, 0.0F);
+    float3 f110 = f - float3(1.0F, 1.0F, 0.0F);
 
-    float3 f001 = f - float3(0, 0, 1);
-    float3 f101 = f - float3(1, 0, 1);
-    float3 f011 = f - float3(0, 1, 1);
-    float3 f111 = f - float3(1, 1, 1);
+    float3 f001 = f - float3(0.0F, 0.0F, 1.0F);
+    float3 f101 = f - float3(1.0F, 0.0F, 1.0F);
+    float3 f011 = f - float3(0.0F, 1.0F, 1.0F);
+    float3 f111 = f - float3(1.0F, 1.0F, 1.0F);
 
     float d000 = DotGradient(i, f);
     float d100 = DotGradient(i100, f100);
@@ -174,7 +174,7 @@ float ImprovedNoise(float3 seeds, float3 scale)
     float d011 = DotGradient(i011, f011);
     float d111 = DotGradient(i111, f111);
 
-    f = f * f * f * (f * (f * 6.0 - 15.0) + 10.0);
+    f = f * f * f * (f * (f * 6.0F - 15.0F) + 10.0F);
 
     float d000d100 = lerp(d000, d100, f.x);
     float d010d110 = lerp(d010, d110, f.x);
@@ -184,21 +184,22 @@ float ImprovedNoise(float3 seeds, float3 scale)
     float d000d100d010d110 = lerp(d000d100, d010d110, f.y);
     float d001d101d011d111 = lerp(d001d101, d011d111, f.y);
 
-    return lerp(d000d100d010d110, d001d101d011d111, f.z) * 0.5 + 0.5;
+    return lerp(d000d100d010d110, d001d101d011d111, f.z) * 0.5F + 0.5F;
 }
 
 /// \param octaves noise sample count(loop count)
 float FractalBlockNoise(float2 seeds, int octaves)
 {
-    float output = 0.0;
-    float amplitude = 0.5;
+    float output = 0.0F;
+    float amplitude = 0.5F;
 
+    [unroll]
     for (int i = 0; i < octaves; i++)
     {
-        output += BlockNoise(seeds, 1) * amplitude;
+        output += BlockNoise(seeds, 1.0F) * amplitude;
 
-        seeds *= 2.0;
-        amplitude *= 0.5;
+        seeds *= 2.0F;
+        amplitude *= 0.5F;
     }
 
     return output;
@@ -206,9 +207,9 @@ float FractalBlockNoise(float2 seeds, int octaves)
 
 inline float2 VoronoiRandVec(float2 seeds, float offset)
 {
-    float2x2 m = float2x2(12.27, 47.63, 98.31, 78.32);
+    float2x2 m = float2x2(12.27F, 47.63F, 98.31F, 78.32F);
     seeds = rand2(mul(seeds, m));
-    return float2(sin(seeds.y * offset) * 0.5 + 0.5, cos(seeds.x * offset) * 0.5 + 0.5);
+    return float2(sin(seeds.y * offset) * 0.5F + 0.5F, cos(seeds.x * offset) * 0.5F + 0.5F);
 }
 
 void Voronoi(float2 seeds, float angleOffset, float cellDensity, out float cellularNoise, out float voronoi)
@@ -216,8 +217,7 @@ void Voronoi(float2 seeds, float angleOffset, float cellDensity, out float cellu
     float2 i = floor(seeds * cellDensity);
     float2 f = frac(seeds * cellDensity);
 
-    float t = 8.0;
-    float3 res = float3(8.0, 0.0, 0.0);
+    float3 res = float3(8.0F, 0.0F, 0.0F);
 
     [unroll]
     for (int y = -1; y <= 1; y++)
