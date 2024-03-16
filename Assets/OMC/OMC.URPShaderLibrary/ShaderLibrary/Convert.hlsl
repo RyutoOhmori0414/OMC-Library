@@ -11,7 +11,7 @@ inline half RGB2Luminance(half3 rgb)
 inline half3 RGB2HSV(half3 rgb)
 {
     half4 K = half4(0.0H, -1.0H / 3.0H, 2.0H / 3.0H, -1.0H);
-    half4 P = lerp(half4(rgb.gb, K.wz), half4(rgb.gb, K.xy), step(rgb.b, rgb.g));
+    half4 P = lerp(half4(rgb.bg, K.wz), half4(rgb.gb, K.xy), step(rgb.b, rgb.g));
     half4 Q = lerp(half4(P.xyw, rgb.r), half4(rgb.r, P.yzx), step(P.x, rgb.r));
     half D = Q.x - min(Q.w, Q.y);
     half E = 1e-10H;
