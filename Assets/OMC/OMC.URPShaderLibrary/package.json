@@ -1,8 +1,8 @@
 {
-  "name": "omc.shader-library.urp",
+  "name": "com.omc.shader-library.urp",
   "discriotion": "OMC Custom ShaderLibrary for URP",
   "displayName": "OMC URP SahderLibrary",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "unity": "2022.3",
   "keywords": ["ShaderLibrary", "OMC"]
 }

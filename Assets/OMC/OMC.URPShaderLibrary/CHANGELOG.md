@@ -13,3 +13,5 @@
 - SobelFilterの追加
 - min3, max3マクロの追加
 - RGB2Luminance, RGB2HSV, HSV2RGBの追加
+
+0.1.3
