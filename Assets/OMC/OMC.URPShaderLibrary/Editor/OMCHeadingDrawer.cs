@@ -9,18 +9,17 @@ namespace OMC.ShaderLibrary.Editor
     {
         private readonly string _headingLabel;
 
-        private bool _isInit = false;
-
         public OMCHeadingDrawer(string headingLabel)
         {
             _headingLabel = headingLabel;
         }
-
+        
         public override void Apply(MaterialProperty prop)
         {
-            Debug.Log(_headingLabel);
-            
-            base.Apply(prop);
+        }
+
+        public override void OnGUI(Rect position, MaterialProperty prop, GUIContent label, MaterialEditor editor)
+        {
         }
     }   
 }

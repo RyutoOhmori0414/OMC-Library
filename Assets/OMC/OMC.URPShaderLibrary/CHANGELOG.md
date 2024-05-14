@@ -15,3 +15,7 @@
 - RGB2Luminance, RGB2HSV, HSV2RGBの追加
 
 0.1.3
+
+0.1.4
+- Metaballの追加
+- UnityのVersion制限の廃止
